@@ -1,0 +1,41 @@
+extends layout.pug
+
+block body
+  main
+    header
+      h1
+        | Welcome #{currentUserName}
+      section
+        a(href="/post") 
+          b 
+            | Post a message
+    if timeline.length > 0
+      hr
+      div   
+        header
+          h2
+            | Latest posts 
+        section
+          each message in timeline
+            aside
+              blockquote
+                =message.message
+                footer 
+                  | #{message.author}, #{message.timeString} ago
+    if users.length > 0   
+      hr
+      div
+        header
+          h2
+            | Follow someone new 
+        section
+          table 
+            tbody  
+            each user in users
+              tr 
+                td
+                  form(action='/follow' method='post' style='border: 0;box-shadow: none;')
+                    input(type='hidden' name='username' value=user)
+                    section
+                      button(type='submit')
+                        =user

@@ -1,0 +1,18 @@
+extends layout.pug
+
+block body
+  main
+    header
+      h1
+        | Sign in to Flipper MVP
+    section
+      form(action='#' method='POST')
+          label(for='username')
+            | Username
+          input#username(type='text' name="username" required='required')
+          label(for='password')
+            | Password
+          input#password(type='password' name="password" required='required')
+          button
+            | Sign in
+    
